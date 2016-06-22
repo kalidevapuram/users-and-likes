@@ -1,0 +1,50 @@
+<div class="container">
+	<h1>Register</h1>
+  <form action="/users" method="post">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+ 
+    
+    <div class="form-group">
+      <label for="name">Name</label>
+      <% if flash[:error] %>
+        <% flash[:error].each do |e| %>
+            <% if e == "Name can't be blank" %>
+              <h6 style="color:red"><%= e %></h6>
+            <% end %>
+        <% end %>
+      <% end %>
+      <input type="text" class="form-control" name="user[name]" id="name">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <% if flash[:error] %>
+        <% flash[:error].each do |e| %>
+            <% if e == "Email is invalid" %>
+              <h6 style="color:red"><%= e %></h6>
+            <% end %>
+        <% end %>
+      <% end %>
+      <input type="email" class="form-control" name="user[email]" id="email">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <% if flash[:error] %>
+        <% flash[:error].each do |e| %>
+            <% if e == "Password can't be blank" %>
+              <h6 style="color:red"><%= e %></h6>
+            <% end %>
+        <% end %>
+      <% end %>
+      <input type="password" class="form-control" name="user[password]" id="password">
+    </div>
+    <div class="form-group">
+      <label for="password_confirmation">Password Confirmation</label>
+      <input type="password" class="form-control" name="user[password_confirmation]" id="password_confirmation">
+    </div>
+    
+
+    <input type="submit" class="btn btn-default" value="Join" />
+    
+  </form>
+</div>
